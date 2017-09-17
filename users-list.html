@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>User List</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    -->
+    <script>
+        function confirmDelete() {
+            var txt;
+            var r = confirm("Do you want to delete the data?");
+            if (r == true) {
+                txt = "You pressed OK!";
+            } else {
+                txt = "You pressed Cancel!";
+            }
+        }
+    </script>
+  </head>
+    
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <!-- Navbar-->
+      <header class="main-header hidden-print"><a class="logo" href="index.html">Website Name</a>
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+          <!-- Navbar Right Menu-->
+          <div class="navbar-custom-menu">
+            <ul class="top-nav">
+              <!-- User Menu-->
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu">
+                  <li><a href="user-profile.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image"><img class="img-circle" src="images/user.png" alt="User Image"></div>
+            <div class="pull-left info">
+              <p>Name Lastname</p>
+              <p class="designation">UserType</p>
+            </div>
+          </div>
+          <!-- Sidebar Menu-->
+          <ul class="sidebar-menu">
+            <li><a href="user-profile.html"><i class="fa fa-address-card"></i><span>Profile</span></a></li>
+
+            <li><a href="index.html"><i class="fa fa-pencil-square-o"></i><span>Project's Board</span></a></li>
+
+            <li><a href="students-list.html"><i class="fa fa-th-list"></i><span>Student List</span></a></li>
+              
+            <li class="active"><a href="users-list.html"><i class="fa fa-th-list"></i><span>User List</span></a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <div class="content-wrapper">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-th-list"></i> User List</h1>
+            <p>List to display User's detail in this webboard</p>
+          </div>
+          <!--<div>
+            <ul class="breadcrumb side">
+              <li><i class="fa fa-home fa-lg"></i></li>
+              <li>Tables</li>
+              <li class="active"><a href="#">Data Table</a></li>
+            </ul>
+          </div>-->
+        </div>
+          
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-title-w-btn">
+                <h3 class="card-title"> </h3>
+			    <a class="btn btn-info  btn-xs icon-btn" href="newuser.html"><i class="fa fa-user-plus"></i>New</a>
+		      </div>
+              <div class="card-body">
+                <table class="table table-hover table-responsive" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Name Lastname</th>
+                      <th>E-Mail</th>
+                      <th>User Type</th>
+                      <th>Last Login</th>
+                      <th>Manage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>t_nixon</td>
+                      <td>Tiger Nixon</td>
+                      <td>t_nixon@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/02</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit" ><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>g_winters</td>
+                      <td>Garrett Winters</td>
+                      <td>g_winters@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/08/30</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>a_cox@ku</td>
+                      <td>Ashton Cox</td>
+                      <td>a_cox@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>c_kelly</td>
+                      <td>Cedric Kelly</td>
+                      <td>c_kelly@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/08/22</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>a_satou</td>
+                      <td>Airi Satou</td>
+                      <td>a_satou@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2008/11/28</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>b_williamson</td>
+                      <td>Brielle Williamson</td>
+                      <td>b_williamson@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/09</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>h_chandler</td>
+                      <td>Herrod Chandler</td>
+                      <td>h_chandler@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/08/30</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>r_davidson</td>
+                      <td>Rhona Davidson</td>
+                      <td>r_davidson@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/01</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>c_hurst</td>
+                      <td>Colleen Hurst</td>
+                      <td>c_hurst@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>s_frost</td>
+                      <td>Sonya Frost</td>
+                      <td>s_frost@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/09</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>j_gaines</td>
+                      <td>Jena Gaines</td>
+                      <td>j_gaines@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/08/25</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>q_flynn</td>
+                      <td>Quinn Flynn</td>
+                      <td>q_flynn@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/01</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>c_marshall</td>
+                      <td>Charde Marshall</td>
+                      <td>c_marshall@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>h_kennedy</td>
+                      <td>Haley Kennedy</td>
+                      <td>h_kennedy@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/08/31</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>t_fitzpatrick</td>
+                      <td>Tatyana Fitzpatrick</td>
+                      <td>t_fitzpatrick@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>m_silva</td>
+                      <td>Michael Silva</td>
+                      <td>m_silva@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/02</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>p_byrd</td>
+                      <td>Paul Byrd</td>
+                      <td>p_byrd@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/08/25</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>g_little</td>
+                      <td>Gloria Little</td>
+                      <td>g_little@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/02</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>b_greer</td>
+                      <td>Bradley Greer</td>
+                      <td>b_greer@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>d_rios</td>
+                      <td>Dai Rios</td>
+                      <td>d_rios@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>j_caldwell</td>
+                      <td>Jenette Caldwell</td>
+                      <td>j_caldwell@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/03</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>y_berry</td>
+                      <td>Yuri Berry</td>
+                      <td>y_berry@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/07/27</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>c_vance</td>
+                      <td>Caesar Vance</td>
+                      <td>c_vance@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/07</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>d_wilder</td>
+                      <td>Doris Wilder</td>
+                      <td>d_wilder@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>a_ramos</td>
+                      <td>Angelica Ramos</td>
+                      <td>a_ramos@ku.ac.th</td>
+                      <td>Student</td>
+                      <td>2017/09/09</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>g_joyce</td>
+                      <td>Gavin Joyce</td>
+                      <td>g_joyce@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>j_chang</td>
+                      <td>Jennifer Chang</td>
+                      <td>j_chang@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/08/30</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>b_wagner</td>
+                      <td>Brenden Wagner</td>
+                      <td>b_wagner@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/08/30</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>f_green</td>
+                      <td>Fiona Green</td>
+                      <td>f_green@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>s_itou</td>
+                      <td>Shou Itou</td>
+                      <td>s_itou@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/02</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>m_house</td>
+                      <td>Michelle House</td>
+                      <td>m_house@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/09</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>s_burks</td>
+                      <td>Suki Burks</td>
+                      <td>s_burks@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/09</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>p_bartlett</td>
+                      <td>Prescott Bartlett</td>
+                      <td>p_bartlett@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/08/28</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>g_cortez</td>
+                      <td>Gavin Cortez</td>
+                      <td>g_cortez@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>m_mccray</td>
+                      <td>Martena Mccray</td>
+                      <td>m_mccray@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>u_butler</td>
+                      <td>Unity Butler</td>
+                      <td>u_butler@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>h_hatfield</td>
+                      <td>Howard Hatfield</td>
+                      <td>h_hatfield@ku.ac.th</td>
+                      <td>Teacher</td>
+                      <td>2017/09/07</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>h_fuentes</td>
+                      <td>Hope Fuentes</td>
+                      <td>h_fuentes@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>v_harrell</td>
+                      <td>Vivian Harrell</td>
+                      <td>v_harrell@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/05</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>t_mooney</td>
+                      <td>Timothy Mooney</td>
+                      <td>t_mooney@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/10</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>j_bradshaw</td>
+                      <td>Jackson Bradshaw</td>
+                      <td>j_bradshaw@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>o_liang</td>
+                      <td>Olivia Liang</td>
+                      <td>o_liang@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>b_nash</td>
+                      <td>Bruno Nash</td>
+                      <td>b_nash@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>s_yamamoto</td>
+                      <td>Sakura Yamamoto</td>
+                      <td>s_yamamoto@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/01</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>t_walton</td>
+                      <td>Thor Walton</td>
+                      <td>t_walton@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/05</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                      
+                    <tr>
+                      <td>f_camacho</td>
+                      <td>Finn Camacho</td>
+                      <td>f_camacho@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>s_baldwin</td>
+                      <td>Serge Baldwin</td>
+                      <td>s_baldwin@ku.ac.th</td>
+                      <td>Admin</td>
+                      <td>2017/09/11</td>
+                      <td align="center"> 
+                        <a href="user-info.html" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a class="demoSwal" href="#" title="Delete"><i class="fa fa-times"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Javascripts-->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+      
+    <script type="text/javascript" src="js/plugins/sweetalert.min.js"></script>
+    <script type="text/javascript">
+      $('.demoSwal').click(function(){
+      	swal({
+      		title: "Are you sure?",
+      		text: "You will not be able to recover this imaginary file!",
+      		type: "warning",
+      		showCancelButton: true,
+      		confirmButtonText: "Yes, delete it!",
+      		cancelButtonText: "No, cancel plx!",
+      		closeOnConfirm: false,
+      		closeOnCancel: false
+      	}, function(isConfirm) {
+      		if (isConfirm) {
+      			swal("Deleted!", "Your imaginary file has been deleted.", "success");
+      		} else {
+      			swal("Cancelled", "Your imaginary file is safe :)", "error");
+      		}
+      	});
+      });
+    </script>
+  </body>
+</html>
