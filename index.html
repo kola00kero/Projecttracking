@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Project's Board</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    -->
+  </head>
+    
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <!-- Navbar-->
+      <header class="main-header hidden-print"><a class="logo" href="index.html">Website Name</a>
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+          <!-- Navbar Right Menu-->
+          <div class="navbar-custom-menu">
+            <ul class="top-nav">
+              <!-- User Menu-->
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu">
+                  <li><a href="user-profile.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image"><img class="img-circle" src="images/user.png" alt="User Image"></div>
+            <div class="pull-left info">
+              <p>Name Lastname</p>
+              <p class="designation">UserType</p>
+            </div>
+          </div>
+          <!-- Sidebar Menu-->
+          <ul class="sidebar-menu">
+            <li><a href="user-profile.html"><i class="fa fa-address-card"></i><span>Profile</span></a></li>
+
+            <li class="active"><a href="index.html"><i class="fa fa-pencil-square-o"></i><span>Project's Board</span></a></li>
+
+            <li><a href="students-list.html"><i class="fa fa-th-list"></i><span>Student List</span></a></li>
+              
+            <li><a href="users-list.html"><i class="fa fa-th-list"></i><span>User List</span></a></li>
+          </ul>
+        </section>
+      </aside>
+        
+      <div class="content-wrapper">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-pencil-square-o"></i> Project's Board</h1>
+            <p>List to display Student's Projrct and Projrct's detail</p>
+          </div>
+        </div>
+          
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-title-w-btn">
+              <h3 class="card-title"> </h3>
+			  <a class="btn btn-info  btn-xs icon-btn" href="form-newinfo.html"><i class="fa fa-fw fa-lg fa-plus-circle"></i>New</a>
+		      </div>
+              <div class="card-body">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>วันที่เข้าพบ</th>
+                      <th>หัวข้อ</th>
+                      <th>อาจารที่เข้าพบ</th>
+                      <th>สถานะ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ondblclick ="test()">
+                      <td>3/9/2560</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>Approve</td>
+                    </tr>
+                    <tr  ondblclick ="test()">
+                      <td>8/9/2560</td>
+                      <td>System Architect 2</td>
+                      <td>ดร.aaaa aaaa</td>
+                      <td>Waiting Approve</td>
+                    </tr>
+                    <tr  ondblclick ="test()">
+                      <td>11/9/2560</td>
+                      <td>System Request Leave</td>
+                      <td>ดร.bbbb bbbb</td>
+                      <td>Approve</td>
+                    </tr>
+                    <tr  ondblclick ="test()">
+                      <td>10/9/2560</td>
+                      <td>ระบบทดสอบการบันทึก</td>
+                      <td>ดร.aaaa aaaa</td>
+                      <td>Draft</td>
+                    </tr  ondblclick ="test()">
+                    <tr  ondblclick ="test()">
+                      <td>8/9/2560</td>
+                      <td>System Architect 2</td>
+                      <td>ดร.aaaa aaaa</td>
+                      <td>Waiting Approve</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Javascripts-->
+    <script>
+    function test(){
+        window.location.href="form-docinfo.html";
+    }  
+    </script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+  </body>
+</html>
