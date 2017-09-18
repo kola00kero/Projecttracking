@@ -23,24 +23,24 @@
     </section>
     <section class="login-content">
       <div class="logo">
-        <h1>Website Name</h1>
+        <h1>Project Tracking System</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="index.html">
+        <form class="login-form" action="login-check.php" method="post" name="login_form">
           <h3 class="login-head">SIGN IN</h3>
           <div class="form-group">
             <label class="control-label">USERNAME</label>
-            <input class="form-control" type="text" placeholder="Email" autofocus>
+            <input class="form-control" type="text" name="user" placeholder="Username" autofocus required>
           </div>
           <div class="form-group">
             <label class="control-label">PASSWORD</label>
-            <input class="form-control" type="password" placeholder="Password">
+            <input class="form-control" type="password" name="pw" placeholder="Password" required>
           </div>
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">
                 <label class="semibold-text">
-                  <input type="checkbox"><span class="label-text">Stay Signed in</span>
+<!--                  <input type="checkbox"><span class="label-text">Stay Signed in</span>-->
                 </label>
               </div>
               <p class="semibold-text mb-0"><a data-toggle="flip">Forgot Password ?</a></p>
@@ -66,8 +66,9 @@
       </div>
     </section>
   </body>
-  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+<!--  <script src="js/jquery-2.1.4.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js"></script>-->
 </html>
