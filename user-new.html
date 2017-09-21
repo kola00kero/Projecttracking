@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS--> 
+	  <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Add User</title>
+<!--	  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    -->
+  </head>
+
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <!-- Navbar-->
+      <header class="main-header hidden-print"><a class="logo" href="index.html">Website Name</a>
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+          <!-- Navbar Right Menu-->
+          <div class="navbar-custom-menu">
+            <ul class="top-nav">
+              <!-- User Menu-->
+              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                <ul class="dropdown-menu settings-menu">
+                  <li><a href="user-profile.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image"><img class="img-circle" src="images/user.png" alt="User Image"></div>
+            <div class="pull-left info">
+              <p>Name Lastname</p>
+              <p class="designation">UserType</p>
+            </div>
+          </div>
+          <!-- Sidebar Menu-->
+          <ul class="sidebar-menu">
+            <li><a href="user-profile.html"><i class="fa fa-address-card"></i><span>Profile</span></a></li>
+
+            <li><a href="index.html"><i class="fa fa-pencil-square-o"></i><span>Project's Board</span></a></li>
+
+            <li><a href="students-list.html"><i class="fa fa-th-list"></i><span>Student List</span></a></li>
+              
+            <li class="active"><a href="users-list.html"><i class="fa fa-th-list"></i><span>User List</span></a></li>
+          </ul>
+        </section>
+      </aside>
+        
+      <div class="content-wrapper">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-user-plus"></i> New user</h1>
+            <p>Page to add new user and infomation</p>
+          </div>
+          <!--<div>
+            <ul class="breadcrumb side">
+              <li><i class="fa fa-home fa-lg"></i></li>
+              <li>Tables</li>
+              <li class="active"><a href="#">Data Table</a></li>
+            </ul>
+          </div>-->
+        </div>
+        <div class="row user">
+          
+          <div class="col-md-3">
+            <div class="profile">
+              <div class="info"><img class="user-img" src="images/user.png">
+                <h4>Name Lastname</h4>
+                <p>User Type</p>
+              </div>
+            </div> 
+          </div>
+            
+          <div class="col-md-9">
+            <div class="card user-settings">
+                <form data-toggle="validator" role="form" action="user-new.php" method="post" name="add_user">
+                      
+                    <h4 class="line-head">User's Infomation</h4>
+
+                <div class="row mb-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">Username</label>
+                            <input class="form-control" id="inputName" name="username" type="text" placeholder="Username" data-error="Please enter Username." required />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputPassword">Password</label>
+                            <input class="form-control" id="inputPassword" name="password" type="password" placeholder="Password" data-minlength="5" data-error="must enter minimum of 5 characters" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputPassword">Confirm password</label>
+                            <input class="form-control" id="inputPassword" name="cfpassword" type="password" placeholder="Confirm password" data-minlength="5" data-error="must enter minimum of 5 characters" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!--<div class="row mb-20">-->
+                    <div class="form-group">
+                        <label class="control-label">User type</label>
+                        <div class="animated-radio-button">
+                            <div class="radio">
+                                <label><input type="radio" name="gender"><span class="label-text">Admin</span></label>
+                                <label><input type="radio" name="gender"><span class="label-text">Teacher</span></label>
+                                <label><input type="radio" name="gender" checked><span class="label-text">Student</span></label>
+                            </div>
+                        </div>
+                    </div>
+                <!--</div>-->
+                
+                <!--<div class="row mb-20">-->
+                    <div class="form-group">
+                        <label class="control-label">Profile picture</label>
+                        <input class="form-control" type="file" name="profilepic">
+                    </div>
+                <!--</div>-->   
+                    
+                    <br>
+                    <h4 class="line-head">Personnel's Infomation</h4>        
+                        
+                <div class="row mb-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">Code</label>
+                            <input class="form-control" id="inputName" name="code" type="text" placeholder="Code" data-error="Please enter Code." required />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div> 
+                    
+                <div class="row mb-20">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">Title name</label>
+                            <input class="form-control" id="inputName" name="tname" type="text" placeholder="Title name" data-error="Please enter Title name." required />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">First name</label>
+                            <input class="form-control" id="inputName" name="fname" type="text" placeholder="First name" data-error="Please enter First name." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">Last name</label>
+                            <input class="form-control" id="inputName" name="lname" type="text" placeholder="Last name" data-error="Please enter Last name." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>  
+                        
+                <div class="row mb-20">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">Address</label>
+                            <textarea class="form-control" id="textArea" rows="3" name="address" placeholder="Address" data-error="Please enter Address." required></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>        
+                    
+                <div class="row mb-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="inputEmail">E-mail</label>
+                            <input class="form-control" id="inputEmail" name="email" type="text" placeholder="E-mail" data-error="Please enter E-mail." required />
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" for="inputName">Mobile no.</label>
+                            <input class="form-control" id="inputName" name="mobileno." type="text" placeholder="Mobile no." data-error="Please enter Mobile no." required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+                </form> 
+            </div>
+          </div>
+            
+        </div>
+      </div>
+    </div>
+      
+    <!-- Javascripts-->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="js/plugins/select2.min.js"></script>
+    <script type="text/javascript" src="js/plugins/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="js/plugins/validator.js"></script>
+    <script type="text/javascript">
+      $('#MainAdvisor').select2();
+      $('#OtherAdvisor').select2();
+    </script>
+  </body>
+</html>
