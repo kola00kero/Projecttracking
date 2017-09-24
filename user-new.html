@@ -122,9 +122,9 @@
                         <label class="control-label">User type</label>
                         <div class="animated-radio-button">
                             <div class="radio">
-                                <label><input type="radio" name="gender"><span class="label-text">Admin</span></label>
-                                <label><input type="radio" name="gender"><span class="label-text">Teacher</span></label>
-                                <label><input type="radio" name="gender" checked><span class="label-text">Student</span></label>
+                                <label><input type="radio" name="usertype" value="Admin"><span class="label-text">Admin</span></label>
+                                <label><input type="radio" name="usertype" value="Teacher"><span class="label-text">Teacher</span></label>
+                                <label><input type="radio" name="usertype" value="Student" checked><span class="label-text">Student</span></label>
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,44 @@
                         </div>
                     </div>
                 </div>
-
+				<div id="Reportto">
+					<div class="row mb-20">
+					<div class="col-md-12">
+						<label>Main advisor</label>
+                    	<select class="form-control" id="MainAdvisor">
+                            <optgroup label="Select Advisor">
+                                <option>Mrs. Test 1 Advisor</option>
+                                <option>Dr. Test 2 Advisor</option>
+                                <option>Dr. Test 3 Advisor</option>
+                                <option>Mr. Test 4 Advisor</option>
+                                <option>Miss. Test 5 Advisor</option>
+                                <option>Mrs. Test 6 Advisor</option>
+                                <option>Mr. Test 7 Advisor</option>
+                                <option>Dr. Test 8 Advisor</option>
+                                <option>Dr. Test 9 Advisor</option>
+                            </optgroup>
+                        </select>
+					</div>
+               </div>
+			   		<div class="row mb-20">
+					<div class="col-md-12">
+						<label>Other advisor</label>
+                    	<select class="form-control" id="OtherAdvisor">
+                            <optgroup label="Select Advisor">
+                                <option>Mrs. Test 1 Advisor</option>
+                                <option>Dr. Test 2 Advisor</option>
+                                <option>Dr. Test 3 Advisor</option>
+                                <option>Mr. Test 4 Advisor</option>
+                                <option>Miss. Test 5 Advisor</option>
+                                <option>Mrs. Test 6 Advisor</option>
+                                <option>Mr. Test 7 Advisor</option>
+                                <option>Dr. Test 8 Advisor</option>
+                                <option>Dr. Test 9 Advisor</option>
+                            </optgroup>
+                        </select>
+					</div>
+               	</div>
+				</div>
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
@@ -224,6 +261,15 @@
     <script type="text/javascript">
       $('#MainAdvisor').select2();
       $('#OtherAdvisor').select2();
+	  $("input[name='usertype']").change(function(){
+		  var x = document.getElementById('Reportto');
+		  if($(this).val() != "Student"){
+			  x.style.display = "none";
+		  }
+		  else{
+			  x.style.display = "";
+		  }
+	  });
     </script>
   </body>
 </html>
