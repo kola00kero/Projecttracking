@@ -4,9 +4,13 @@ $username = "root";
 $password = "";
 $database = "projecttracking";
 
-$conn = mysqli_connect($hostname,$username,$password,$database) or die("cannot connect DB");
-//$db   = mysql_select_db($database) or die("cannot select DB");
-//mysql_query("SET character_set_results=tis620");
-//mysql_query("SET character_set_client=tis620");
-//mysql_query("SET character_set_connection=tis620");
+
+// Create connection
+$conn = new mysqli($hostname, $username, $password, $database);
+//$conn = mysqli_connect($hostname,$username,$password,$database) or die("cannot connect DB");
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+$conn -> set_charset("utf8");
 ?>
