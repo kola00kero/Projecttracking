@@ -1,6 +1,5 @@
-<?php $title = "Project's Board"; include 'header.php';?>
-
-	<?php $page = "Board"; include 'manu.php';?>
+﻿<?php $title = "Project's Board"; include 'header.php';?>
+<?php $page = "Board"; include 'manu.php';?>
         
       <div class="content-wrapper">
         <div class="page-title">
@@ -20,7 +19,8 @@
                   <?php } ?>
 		      </div>
               <div class="card-body">
-                <table class="table table-hover table-responsive" id="sampleTable">
+				  <?php $sort=""; if($_SESSION["mem_type"] != '2'){ $sort="6"; }else {$sort="5";}?> 
+				  <table class="table table-hover table-responsive" data-order='[[ <?php echo $sort; ?>, "desc" ]]' id="sampleTable">
                     <thead>
                     <tr>
                         <th>วันที่เข้าพบ</th>
@@ -30,6 +30,8 @@
                     <?php } ?>
                         <th>หัวข้อ</th>
                         <th>สถานะ</th>
+						<th>ข้อความล่าสุด</th>
+						<th style="display:none;">ข้อความล่าสุด</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,6 +68,35 @@
                             $topp_topic = $resultTop["topp_topic"];
                             $topp_advi = $resultTop["topp_advi"];
                             $topp_mam = $resultTop["mem_tname"]." ".$resultTop['mem_fname']." ".$resultTop['mem_lname'];
+							$LastUpdate = $resultTop["LastUpdate"];
+							$date = strtotime($LastUpdate);
+							
+							$datetime1 = new DateTime($LastUpdate);
+							$datetime2 = new DateTime();
+							$interval = $datetime2->diff($datetime1);
+							$overDay = $interval->format('%a');;
+							$overhour = $interval->format('%h');;
+							if($overDay < 1)
+							{
+								if($overhour < 1)
+								{
+                                    if($interval->format('%i') < 5)
+                                    {
+                                        $newLast = "ตอนนี้";
+                                    }else{
+                                        $newLast = $interval->format('%i')." นาทีที่แล้ว";
+                                    }
+									
+								}
+								else{
+									$newLast = $overhour." ชั่วโมงที่แล้ว";//"วันนี้ : ".date('H:m:s', $date);
+								}
+							}
+                            else
+                            {
+                                $newLast = "วันที่ ".date("d/M/Y H:i:s", strtotime($LastUpdate))." น.";
+                            }
+							
                             $Advarr = explode(" , ", $topp_advi);
                             $adviser = "";
                                 for($i = 0; $i < count($Advarr); $i++)
@@ -110,6 +141,8 @@
                         <?php } ?>
                         <td><?php echo $topp_topic; ?></td>
                         <td><?php echo $topp_approvestartus; ?></td>
+						<td><?php echo $newLast; ?></td>
+						<td style="display:none;"><?php echo $LastUpdate; ?></td>
                       </tr>
                         <?php 
                                 }

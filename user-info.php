@@ -37,6 +37,7 @@
             }
         }
     }
+    $stmtmem->close();
 ?>
 
 <?php $page = "Users"; include 'manu.php';?>

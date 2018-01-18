@@ -1,9 +1,8 @@
 <?php 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$database = "projecttracking";
-
+$servername = '158.108.34.31';
+$username = 'sukationg';
+$password = '5t4r3e2w1q';
+$database = 'projecttracking';
 
 // Create connection
 $conn = new mysqli($hostname, $username, $password, $database);

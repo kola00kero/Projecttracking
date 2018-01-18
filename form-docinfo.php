@@ -1,39 +1,46 @@
-<?php $title = "Project's Board"; include 'header.php';?>
+﻿<?php $title = "Project's Board"; include 'header.php';?>
 <?php $page = "Board"; include 'manu.php';?>
 <?php
-
-    $doc = json_decode(base64_decode($_GET["doc"]));
-    $sql1 = "SELECT * FROM toppic WHERE topp_id='".$doc."'";
-	$query1 = mysqli_query($conn,$sql1);
-	$result1 = mysqli_fetch_array($query1);
-	if($result1)
+	if($_GET["doc"] == '')
 	{
-        $topp_docdate=$result1['topp_docdate'];
-        $topp_advi=$result1['topp_advi'];
-        $topp_topic=$result1['topp_topic'];  
-        $topp_detail=$result1['topp_detail'];
-        $topp_approvestartus=$result1['topp_approvestartus'];
-        $topp_createdby=$result1['topp_createdby'];
-        $topp_createddate=$result1['topp_createddate'];
-        $topp_modifedby=$result1['topp_modifedby'];
-        $topp_modifeddate=$result1['topp_modifeddate'];
+		header("location:index.php");
+	}
+	else{
+    	$doc = json_decode(base64_decode($_GET["doc"]));
+	}
+    $stmttopp = $conn->prepare("SELECT * FROM toppic WHERE topp_id = ?");
+    $stmttopp->bind_param("s", $doc);
+    $stmttopp->execute();
+    $resulttopp = $stmttopp->get_result();
+    if($toppdata = $resulttopp->fetch_assoc()){
+        $topp_docdate = $toppdata['topp_docdate'];
+        $topp_advi = $toppdata['topp_advi'];
+        $topp_topic = $toppdata['topp_topic'];  
+        $topp_detail = $toppdata['topp_detail'];
+        $topp_approvestartus = $toppdata['topp_approvestartus'];
+        $topp_createdby = $toppdata['topp_createdby'];
+        $topp_createddate = $toppdata['topp_createddate'];
+        $topp_modifedby = $toppdata['topp_modifedby'];
+        $topp_modifeddate = $toppdata['topp_modifeddate'];
     }
-
-    $Advarr = explode(", ", $topp_advi);
+    $stmttopp->close();
+    $Advarr = explode(" , ", $topp_advi);
     $adviser = "";
     for($i = 0; $i < count($Advarr); $i++)
     {
         if($i != 0)
         {
             $adviser .= " , ";
-        } 
-        $sql2 = "SELECT * FROM member WHERE mem_id = '".$Advarr[$i]."'";
-        $query2 = mysqli_query($conn,$sql2);
-        while($result2 = mysqli_fetch_array($query2))
-        {
-            $adviser .= $result2["mem_tname"]." ".$result2['mem_fname']." ".$result2['mem_lname'];
+        }
+        $stmtdocAdv = $conn->prepare("SELECT * FROM member WHERE mem_id = ?");
+        $stmtdocAdv->bind_param("s", $Advarr[$i]);
+        $stmtdocAdv->execute();
+        $resultdocAdv = $stmtdocAdv->get_result();
+        while($docAdvdata = $resultdocAdv->fetch_assoc()){
+            $adviser .= $docAdvdata["mem_tname"]." ".$docAdvdata['mem_fname']." ".$docAdvdata['mem_lname'];
         }
     }
+    $stmtdocAdv->close();
 ?>
 
     <div class="content-wrapper">
@@ -41,15 +48,12 @@
              <div class="card">
                  <div class="card-title-w-btn">
                      <h3 class="title">หัวข้อ : <?php echo $topp_topic; ?> 
-                         <?php if($topp_createdby == $_SESSION["mem_id"]){ ?>
+                         <?php if($topp_createdby == $_SESSION["mem_id"] && $topp_approvestartus == 'W'){ ?>
                             <small><a onclick="editTitle()"><i class="fa fa-edit"></i></a></small>
                          <?php } ?>
                      </h3>
                      <div class="btn-group">
                      <?php 
-//                            $sqlapprover = "SELECT * FROM reportto WHERE rep_std_memid ='".$topp_createdby."' AND rep_teac_memid ='".$_SESSION["mem_id"]."'  AND rep_type = 0";
-//                            $queryapprover = mysqli_query($conn,$sqlapprover);
-//                            $resultapprover = mysqli_num_rows($queryapprover);
                             if($_SESSION["mem_type"] == '1' && $topp_approvestartus == 'W')
                             {
                      ?>
@@ -83,55 +87,69 @@
                          </div>
                      </div>
                  </div>
-                 <?php
-                 $dir = "server/uploads/".$doc."/";
-                 if ($handle = opendir($dir)) {
-                    while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") {
-                            echo "<a href='download.php?dir=".$dir."&file=".$entry."'>".$entry."</a>\n";
-                        }
-                    }
-                    closedir($handle);
-                }   
-                ?>
+                 <div class="table-responsive">
+  						<table class="table table-bordered">
+						  <thead>
+							  <th>Upload</th>
+						  </thead>
+						  <tbody>
+							  <?php
+                 			$dir = "server/uploads/".$doc."/";
+                 			if ($handle = opendir($dir)) {
+                    			while (false !== ($entry = readdir($handle))) {
+                        			if ($entry != "." && $entry != "..") {
+										echo "<tr><td><a href='download.php?dir=".$dir."&file=".$entry."'>".$entry."</a></td></tr>";
+										}
+                    			}
+							closedir($handle);
+                			}   
+                		?>	
+						  </tbody>
+					  	</table>
+					  </div>
              </div>
          </div>
          
         <?php
-            $sql2 = "SELECT * FROM comment WHERE isdeleted=0 and comm_topid='".$doc."' ORDER BY comm_liston ASC";
-            $query2 = mysqli_query($conn,$sql2);
-            while($result2 = mysqli_fetch_array($query2)){
-                $sql3 = "SELECT * FROM member WHERE mem_id = '".$result2['comm_createdby']."'";
-                $query3 = mysqli_query($conn,$sql3);
-                while($result3 = mysqli_fetch_array($query3))
-                {
-                    $Commentname = $result3["mem_tname"]." ".$result3['mem_fname']." ".$result3['mem_lname'];
+            $stmtComm = $conn->prepare("SELECT * FROM comment WHERE isdeleted=0 and comm_topid = ? ORDER BY comm_liston ASC");
+            $stmtComm->bind_param("s", $doc);
+            $stmtComm->execute();
+            $resultComm = $stmtComm->get_result();
+            while($Commdata = $resultComm->fetch_assoc()){
+                $stmtmem = $conn->prepare("SELECT * FROM member WHERE mem_id = ?");
+                $stmtmem->bind_param("s", $Commdata['comm_createdby']);
+                $stmtmem->execute();
+                $resultmem = $stmtmem->get_result();
+                if($memdata = $resultmem->fetch_assoc()){
+                    $Commentname = $memdata["mem_tname"]." ".$memdata['mem_fname']." ".$memdata['mem_lname'];
                 }
+                $stmtmem->close();
                 $commentby ="";
-                if($result2['comm_modifedby']!="")
+                if($Commdata['comm_modifedby']!="")
                 {
-                    $commentby = "<small>แก้ไขบันทึกครั้งล่าสุด on <cite title='Date'>".date("M/d/Y H:m:s", strtotime($result2['comm_modifeddate']))."</cite></small><br/>";
+                    $commentby = "<small>แก้ไขบันทึกครั้งล่าสุด on <cite title='Date'>".date("M/d/Y H:m:s", strtotime($Commdata['comm_modifeddate']))."</cite></small><br/>";
                 }
-                $CID = $result2['comm_id'];
-                    echo "<div class='col-md-11 "; if($result2['comm_createdby'] != $topp_createdby){echo"col-md-offset-1";} echo"'>
+                $CID = $Commdata['comm_id'];
+                    echo "<div class='col-md-11 "; if($Commdata['comm_createdby'] != $topp_createdby){echo"col-md-offset-1";} echo"'>
                             <div class='panel panel-primary'>
-                                <div class='panel-body' id='com".$result2['comm_liston']."'>";
-                                    if($result2['comm_createdby'] == $_SESSION["mem_id"]){
-                                    echo "<a class='pull-right' data-toggle='modal' data-target='.bs-example-modal-lg' onclick='editComment(".$result2['comm_liston'].")' id='btnedit'><i class='fa fa-fw fa-lg fa-pencil-square-o'></i></a>";
+                                <div class='panel-body' id='com".$Commdata['comm_liston']."'>";
+                                    if($Commdata['comm_createdby'] == $_SESSION["mem_id"]){
+                                    echo "<a class='pull-right' data-toggle='modal' data-target='.bs-example-modal-lg' onclick='editComment(".$Commdata['comm_liston'].")' id='btnedit'><i class='fa fa-fw fa-lg fa-pencil-square-o'></i></a>";
                                     }
                                 echo "
-                                <input type='hidden' id='hidcom".$result2['comm_liston']."' value='".$CID."'/>
-                                <h5 class='card-title'>ความคิดเห็นที่ ".$result2['comm_liston']."</h5>
-                                    <div id='comtext".$result2['comm_liston']."'>
-                                    ".$result2['comm_detail']."
+                                <input type='hidden' id='hidcom".$Commdata['comm_liston']."' value='".$CID."'/>
+                                <h5 class='card-title'>ความคิดเห็นที่ ".$Commdata['comm_liston']."</h5>
+                                    <div id='comtext".$Commdata['comm_liston']."'>
+                                    ".$Commdata['comm_detail']."
                                     </div>
                                     ".$commentby."
-                                    <small>Comment by ".$Commentname." on <cite title='Date'>".date("M/d/Y H:m:s", strtotime($result2['comm_createddate']))."</cite></small>
+                                    <small>Comment by ".$Commentname." on <cite title='Date'>".date("M/d/Y H:m:s", strtotime($Commdata['comm_createddate']))."</cite></small>
                                 </div>
                             </div>
                         </div>";
                 
             }
+            $stmtComm->close();
         ?>
          
 		  <div class="col-md-12">
@@ -246,7 +264,7 @@
         }
         $(document).on('click','#btneditcom',function(e) {
             var editComment = $("#editComment").summernote('code');
-            var datafrom = '&Comment=' + editComment + '&comId=' + $("#hidcomedit").val();
+            var datafrom = '&Comment=' + editComment + '&comId=' + $("#hidcomedit").val()+ '&Docid=' + $("#hiddoc").val();
             $.ajax({
                      data: datafrom,
                      type: "post",

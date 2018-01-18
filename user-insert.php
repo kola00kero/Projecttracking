@@ -56,27 +56,25 @@ try {
     echo $e; //use in development
     error_log($e); //use in production
 }
-//$sql = "INSERT INTO member
-//(mem_id, mem_code, mem_username, mem_password, mem_type, mem_tname, mem_fname, mem_lname, mem_address, mem_email, mem_phone) 
-//VALUES 
-//('$newid', '$code', '$user', '$pw', '$usertype', '$tname', '$fname', '$lname', '$address', '$email', '$mobileno')";
-
-//if (mysqli_query($conn,$sql) === TRUE) {
-//    $flax = TRUE;
-//    if($usertype == 2){
-//    $sql2 = "INSERT INTO reportto (rep_id, rep_std_memid, rep_teac_memid, rep_type) VALUES ((SELECT UUID()), '$newid', '$MainAdvisor', 0 )";
-//    mysqli_query($conn,$sql2);
-//    for($i = 0; $i < count($OtherAdvarr); $i++)
-//        {
-//            $sql3 = "INSERT INTO reportto (rep_id, rep_std_memid, rep_teac_memid, rep_type) VALUES ((SELECT UUID()), '$newid', '$OtherAdvarr[$i]', 1 )";
-//            mysqli_query($conn,$sql3);
-//            
-//        }
-//    }
-//}
-
 if($flax == TRUE)
 {
+//	
+//	$SendTo = $_POST['address'];
+//    $subject = "แจ้ง ชื่อผู้ใช้และรหัสผ่าน ของระบบติดตามความคืบหน้าวิทยานิพนธ์";
+//    $message = "<body><div id='site_content'><div class='col-md-12'>
+//                    <div>
+//                        <h3 class='title'>หัวข้อ : ".$_POST['Toppic']."</h3>
+//                    </div>
+//					<p>โดย : ".$_SESSION['mem_fullname']."</p>
+//                    <p>อาจารย์ที่เข้าพบ : ".$adviser."</p>
+//				    <p>วันที่เข้าพบ : ".date("M/d/Y", strtotime($newVisitDate))."</p>
+//                    <p>สรุปประเด็นคำปรึกษา</p>
+//                    <div>".$_POST['Detail']."</div>
+//                </div></div></body>";
+//
+//    
+//    $send = Sendmail($SendTo, $SendFr, $subject, $message);
+	
     echo base64_encode(json_encode($newid));
 }
 

@@ -2,6 +2,7 @@
 session_start();
 include("connect.php");
 include("EnDeCode.php");
+
 $memid=$_POST['UID'];
 $user=$_POST['username'];
 $pw=$_POST['password'];

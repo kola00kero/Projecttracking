@@ -1,4 +1,4 @@
-<?php $title = "รายการข้อมูลสมาชิก"; include 'header.php'; ?>
+﻿<?php $title = "รายการข้อมูลสมาชิก"; include 'header.php'; ?>
 
 <?php $page = "Users"; include 'manu.php';?>
 
@@ -53,7 +53,7 @@
                             <td><?php echo $mem_name; ?></td>
                             <td><?php echo $mem_email; ?></td>
                             <td><?php echo $mem_type; ?></td>
-                            <td><?php echo date("d/M/Y H:m:s", strtotime($mem_lastogin)); ?></td>
+                            <td><?php echo date("d/M/Y H:i:s", strtotime($mem_lastogin)); ?></td>
                             <td align="center"> 
                                 <a href="user-info.php?ui=<?php echo $endID; ?>" class="viewUser" title="View/Edit"><i class="fa fa-file-text-o"></i></a>
                                 &nbsp&nbsp&nbsp&nbsp&nbsp
