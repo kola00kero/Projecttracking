@@ -9,4 +9,8 @@ $conn = mysqli_connect($hostname,$username,$password,$database) or die("cannot c
 //mysql_query("SET character_set_results=tis620");
 //mysql_query("SET character_set_client=tis620");
 //mysql_query("SET character_set_connection=tis620");
+
+
+
+//test  1234
 ?>
